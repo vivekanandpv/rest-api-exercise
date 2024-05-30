@@ -1,5 +1,6 @@
 package com.example.restapiexercise.services;
 
+import com.example.restapiexercise.exceptions.RecordNotFoundException;
 import com.example.restapiexercise.models.Book;
 import org.springframework.stereotype.Service;
 
@@ -15,7 +16,7 @@ public class BookServiceImplementation implements BookService {
     @Override
     public Book get(int id) {
         if (id == 7) {
-            throw new RuntimeException("Oops!");
+            throw new RecordNotFoundException(String.format("Could not find the book with id: %d", id));
         }
 
         return null;
