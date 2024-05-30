@@ -3,6 +3,7 @@ package com.example.restapiexercise.apis;
 import com.example.restapiexercise.exceptions.RecordNotFoundException;
 import com.example.restapiexercise.models.Book;
 import com.example.restapiexercise.services.BookService;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -23,7 +24,10 @@ public class BookApi {
         return ResponseEntity.ok(bookService.get());
     }
 
-    @GetMapping("{id}")
+    @GetMapping(path = "{id}", produces = {
+            MediaType.APPLICATION_JSON_VALUE,
+            MediaType.APPLICATION_XML_VALUE
+    })
     public ResponseEntity<Book> get(@PathVariable int id) {
         return ResponseEntity.ok(bookService.get(id));
     }
