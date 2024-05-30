@@ -36,7 +36,7 @@ public class BookServiceImplementation implements BookService {
 
     @Override
     public Book create(Book book) {
-        return null;
+        return book;
     }
 
     @Override

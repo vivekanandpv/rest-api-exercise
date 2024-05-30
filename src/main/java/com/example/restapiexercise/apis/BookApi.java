@@ -32,7 +32,13 @@ public class BookApi {
         return ResponseEntity.ok(bookService.get(id));
     }
 
-    @PostMapping
+    @PostMapping(consumes = {
+            MediaType.APPLICATION_JSON_VALUE,
+            MediaType.APPLICATION_XML_VALUE
+    }, produces = {
+            MediaType.APPLICATION_JSON_VALUE,
+            MediaType.APPLICATION_XML_VALUE
+    })
     public ResponseEntity<Book> create(@RequestBody Book book) {
         return ResponseEntity.ok(bookService.create(book));
     }
