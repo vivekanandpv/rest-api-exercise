@@ -2,33 +2,33 @@ package com.example.restapiexercise.services;
 
 import com.example.restapiexercise.exceptions.RecordNotFoundException;
 import com.example.restapiexercise.models.Publisher;
+import com.example.restapiexercise.viewmodels.PublisherCreateViewModel;
+import com.example.restapiexercise.viewmodels.PublisherUpdateViewModel;
+import com.example.restapiexercise.viewmodels.PublisherViewModel;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
 public class PublisherServiceImplementation implements PublisherService {
+
     @Override
-    public List<Publisher> get() {
+    public List<PublisherViewModel> get() {
         return List.of();
     }
 
     @Override
-    public Publisher get(int id) {
-        if (id == 7) {
-            throw new RecordNotFoundException(String.format("Could not find the publisher with id: %d", id));
-        }
-
+    public PublisherViewModel get(int id) {
         return null;
     }
 
     @Override
-    public Publisher create(Publisher publisher) {
+    public PublisherViewModel create(PublisherCreateViewModel viewModel) {
         return null;
     }
 
     @Override
-    public Publisher update(int id, Publisher publisher) {
+    public PublisherViewModel update(int id, PublisherUpdateViewModel viewModel) {
         return null;
     }
 

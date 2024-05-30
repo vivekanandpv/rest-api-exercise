@@ -2,6 +2,9 @@ package com.example.restapiexercise.apis;
 
 import com.example.restapiexercise.models.Publisher;
 import com.example.restapiexercise.services.PublisherService;
+import com.example.restapiexercise.viewmodels.PublisherCreateViewModel;
+import com.example.restapiexercise.viewmodels.PublisherUpdateViewModel;
+import com.example.restapiexercise.viewmodels.PublisherViewModel;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,22 +20,22 @@ public class PublisherApi {
     }
 
     @GetMapping
-    public ResponseEntity<List<Publisher>> get() {
+    public ResponseEntity<List<PublisherViewModel>> get() {
         return ResponseEntity.ok(publisherService.get());
     }
 
     @GetMapping("{id}")
-    public ResponseEntity<Publisher> get(@PathVariable int id) {
+    public ResponseEntity<PublisherViewModel> get(@PathVariable int id) {
         return ResponseEntity.ok(publisherService.get(id));
     }
 
     @PostMapping
-    public ResponseEntity<Publisher> create(@RequestBody Publisher publisher) {
+    public ResponseEntity<PublisherViewModel> create(@RequestBody PublisherCreateViewModel publisher) {
         return ResponseEntity.ok(publisherService.create(publisher));
     }
 
     @PutMapping("{id}")
-    public ResponseEntity<Publisher> update(@PathVariable int id, @RequestBody Publisher publisher) {
+    public ResponseEntity<PublisherViewModel> update(@PathVariable int id, @RequestBody PublisherUpdateViewModel publisher) {
         return ResponseEntity.ok(publisherService.update(id, publisher));
     }
 
