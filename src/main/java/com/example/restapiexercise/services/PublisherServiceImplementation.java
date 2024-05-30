@@ -1,12 +1,16 @@
 package com.example.restapiexercise.services;
 
+import com.example.restapiexercise.exceptions.RecordNotFoundException;
+import com.example.restapiexercise.models.Publisher;
 import com.example.restapiexercise.repositories.PublisherRepository;
 import com.example.restapiexercise.viewmodels.PublisherCreateViewModel;
 import com.example.restapiexercise.viewmodels.PublisherUpdateViewModel;
 import com.example.restapiexercise.viewmodels.PublisherViewModel;
+import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class PublisherServiceImplementation implements PublisherService {
@@ -18,12 +22,16 @@ public class PublisherServiceImplementation implements PublisherService {
 
     @Override
     public List<PublisherViewModel> get() {
-        return List.of();
+        return publisherRepository
+                .findAll()
+                .stream()
+                .map(this::toViewModel)
+                .collect(Collectors.toList());
     }
 
     @Override
     public PublisherViewModel get(int id) {
-        return null;
+        return toViewModel(getEntity(id));
     }
 
     @Override
@@ -39,5 +47,23 @@ public class PublisherServiceImplementation implements PublisherService {
     @Override
     public void delete(int id) {
 
+    }
+
+    private PublisherViewModel toViewModel(Publisher entity) {
+        PublisherViewModel viewModel = new PublisherViewModel();
+        BeanUtils.copyProperties(entity, viewModel);
+        return viewModel;
+    }
+
+    private Publisher getEntity(int id) {
+        return publisherRepository
+                .findById(id)
+                .orElseThrow(() -> new RecordNotFoundException(String.format("Could not find the publisher with id: %d", id)));
+    }
+
+    private Publisher toEntity(PublisherCreateViewModel viewModel) {
+        Publisher entity = new Publisher();
+        BeanUtils.copyProperties(viewModel, entity);
+        return entity;
     }
 }
