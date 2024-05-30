@@ -2,12 +2,23 @@ package com.example.restapiexercise.services;
 
 import com.example.restapiexercise.exceptions.RecordNotFoundException;
 import com.example.restapiexercise.models.Book;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
 public class BookServiceImplementation implements BookService {
+    private final String title;
+    private final int pages;
+
+    public BookServiceImplementation(
+            @Value("${app.book.title}") String title,
+            @Value("${app.book.pages}") int pages) {
+        this.title = title;
+        this.pages = pages;
+    }
+
     @Override
     public List<Book> get() {
         return List.of();
@@ -15,11 +26,12 @@ public class BookServiceImplementation implements BookService {
 
     @Override
     public Book get(int id) {
-        if (id == 7) {
-            throw new RecordNotFoundException(String.format("Could not find the book with id: %d", id));
-        }
+        Book book = new Book();
+        book.setBookId(id);
+        book.setTitle(title);
+        book.setPages(pages);
 
-        return null;
+        return book;
     }
 
     @Override
