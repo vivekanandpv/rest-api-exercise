@@ -1,21 +1,11 @@
-package com.example.restapiexercise.models;
+package com.example.restapiexercise.viewmodels;
 
-public class Book {
-    private int bookId;
+public class BookCreateViewModel {
     private String title;
     private double price;
     private int pages;
     private int edition;
-    private Publisher publisher;
     private int publisherId;
-
-    public int getBookId() {
-        return bookId;
-    }
-
-    public void setBookId(int bookId) {
-        this.bookId = bookId;
-    }
 
     public String getTitle() {
         return title;
@@ -47,14 +37,6 @@ public class Book {
 
     public void setEdition(int edition) {
         this.edition = edition;
-    }
-
-    public Publisher getPublisher() {
-        return publisher;
-    }
-
-    public void setPublisher(Publisher publisher) {
-        this.publisher = publisher;
     }
 
     public int getPublisherId() {

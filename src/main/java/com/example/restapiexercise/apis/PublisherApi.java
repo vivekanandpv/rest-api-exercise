@@ -1,6 +1,5 @@
 package com.example.restapiexercise.apis;
 
-import com.example.restapiexercise.models.Publisher;
 import com.example.restapiexercise.services.PublisherService;
 import com.example.restapiexercise.viewmodels.PublisherCreateViewModel;
 import com.example.restapiexercise.viewmodels.PublisherUpdateViewModel;

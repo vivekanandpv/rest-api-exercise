@@ -1,45 +1,32 @@
 package com.example.restapiexercise.services;
 
-import com.example.restapiexercise.models.Book;
-import org.springframework.beans.factory.annotation.Value;
+import com.example.restapiexercise.viewmodels.BookCreateViewModel;
+import com.example.restapiexercise.viewmodels.BookUpdateViewModel;
+import com.example.restapiexercise.viewmodels.BookViewModel;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
 public class BookServiceImplementation implements BookService {
-    private final String title;
-    private final int pages;
-
-    public BookServiceImplementation(
-            @Value("${app.book.title}") String title,
-            @Value("${app.book.pages}") int pages) {
-        this.title = title;
-        this.pages = pages;
-    }
 
     @Override
-    public List<Book> get() {
+    public List<BookViewModel> get() {
         return List.of();
     }
 
     @Override
-    public Book get(int id) {
-        Book book = new Book();
-        book.setBookId(id);
-        book.setTitle(title);
-        book.setPages(pages);
-
-        return book;
+    public BookViewModel get(int id) {
+        return null;
     }
 
     @Override
-    public Book create(Book book) {
-        return book;
+    public BookViewModel create(BookCreateViewModel viewModel) {
+        return null;
     }
 
     @Override
-    public Book update(int id, Book book) {
+    public BookViewModel update(int id, BookUpdateViewModel viewModel) {
         return null;
     }
 

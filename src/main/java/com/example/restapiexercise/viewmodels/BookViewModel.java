@@ -1,12 +1,12 @@
-package com.example.restapiexercise.models;
+package com.example.restapiexercise.viewmodels;
 
-public class Book {
+public class BookViewModel {
     private int bookId;
     private String title;
     private double price;
     private int pages;
     private int edition;
-    private Publisher publisher;
+    private PublisherViewModel publisher;
     private int publisherId;
 
     public int getBookId() {
@@ -49,11 +49,11 @@ public class Book {
         this.edition = edition;
     }
 
-    public Publisher getPublisher() {
+    public PublisherViewModel getPublisher() {
         return publisher;
     }
 
-    public void setPublisher(Publisher publisher) {
+    public void setPublisher(PublisherViewModel publisher) {
         this.publisher = publisher;
     }
 

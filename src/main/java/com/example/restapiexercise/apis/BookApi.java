@@ -1,7 +1,9 @@
 package com.example.restapiexercise.apis;
 
-import com.example.restapiexercise.models.Book;
 import com.example.restapiexercise.services.BookService;
+import com.example.restapiexercise.viewmodels.BookCreateViewModel;
+import com.example.restapiexercise.viewmodels.BookUpdateViewModel;
+import com.example.restapiexercise.viewmodels.BookViewModel;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,22 +19,22 @@ public class BookApi {
     }
 
     @GetMapping
-    public ResponseEntity<List<Book>> get() {
+    public ResponseEntity<List<BookViewModel>> get() {
         return ResponseEntity.ok(bookService.get());
     }
 
     @GetMapping("{id}")
-    public ResponseEntity<Book> get(@PathVariable int id) {
+    public ResponseEntity<BookViewModel> get(@PathVariable int id) {
         return ResponseEntity.ok(bookService.get(id));
     }
 
     @PostMapping
-    public ResponseEntity<Book> create(@RequestBody Book book) {
+    public ResponseEntity<BookViewModel> create(@RequestBody BookCreateViewModel book) {
         return ResponseEntity.ok(bookService.create(book));
     }
 
     @PutMapping("{id}")
-    public ResponseEntity<Book> update(@PathVariable int id, @RequestBody Book book) {
+    public ResponseEntity<BookViewModel> update(@PathVariable int id, @RequestBody BookUpdateViewModel book) {
         return ResponseEntity.ok(bookService.update(id, book));
     }
 
