@@ -24,21 +24,12 @@ public class BookApi {
         return ResponseEntity.ok(bookService.get());
     }
 
-    @GetMapping(path = "{id}", produces = {
-            MediaType.APPLICATION_JSON_VALUE,
-            MediaType.APPLICATION_XML_VALUE
-    })
+    @GetMapping("{id}")
     public ResponseEntity<Book> get(@PathVariable int id) {
         return ResponseEntity.ok(bookService.get(id));
     }
 
-    @PostMapping(consumes = {
-            MediaType.APPLICATION_JSON_VALUE,
-            MediaType.APPLICATION_XML_VALUE
-    }, produces = {
-            MediaType.APPLICATION_JSON_VALUE,
-            MediaType.APPLICATION_XML_VALUE
-    })
+    @PostMapping
     public ResponseEntity<Book> create(@RequestBody Book book) {
         return ResponseEntity.ok(bookService.create(book));
     }
