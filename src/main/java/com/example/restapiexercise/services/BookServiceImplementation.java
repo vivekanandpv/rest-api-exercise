@@ -14,6 +14,10 @@ public class BookServiceImplementation implements BookService {
 
     @Override
     public Book get(int id) {
+        if (id == 7) {
+            throw new RuntimeException("Oops!");
+        }
+
         return null;
     }
 

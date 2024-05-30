@@ -41,4 +41,9 @@ public class BookApi {
         bookService.delete(id);
         return ResponseEntity.noContent().build();
     }
+
+    @ExceptionHandler(RuntimeException.class)
+    public ResponseEntity<?> handleRuntimeException(RuntimeException exception) {
+        return ResponseEntity.badRequest().body(exception.getMessage());
+    }
 }
