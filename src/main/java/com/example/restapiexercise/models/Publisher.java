@@ -1,6 +1,14 @@
 package com.example.restapiexercise.models;
 
+import jakarta.persistence.*;
+
+import java.util.ArrayList;
+import java.util.List;
+
+@Entity
 public class Publisher {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int publisherId;
     private String name;
     private String addressLine1;
@@ -8,6 +16,8 @@ public class Publisher {
     private String city;
     private String country;
     private String email;
+    @OneToMany(mappedBy = "publisher")
+    private List<Book> books = new ArrayList<>();
 
     public int getPublisherId() {
         return publisherId;
@@ -63,5 +73,13 @@ public class Publisher {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public List<Book> getBooks() {
+        return books;
+    }
+
+    public void setBooks(List<Book> books) {
+        this.books = books;
     }
 }

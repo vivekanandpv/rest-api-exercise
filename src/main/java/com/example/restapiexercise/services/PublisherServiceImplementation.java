@@ -1,5 +1,6 @@
 package com.example.restapiexercise.services;
 
+import com.example.restapiexercise.repositories.PublisherRepository;
 import com.example.restapiexercise.viewmodels.PublisherCreateViewModel;
 import com.example.restapiexercise.viewmodels.PublisherUpdateViewModel;
 import com.example.restapiexercise.viewmodels.PublisherViewModel;
@@ -9,6 +10,11 @@ import java.util.List;
 
 @Service
 public class PublisherServiceImplementation implements PublisherService {
+    private final PublisherRepository publisherRepository;
+
+    public PublisherServiceImplementation(PublisherRepository publisherRepository) {
+        this.publisherRepository = publisherRepository;
+    }
 
     @Override
     public List<PublisherViewModel> get() {

@@ -1,11 +1,18 @@
 package com.example.restapiexercise.models;
 
+import jakarta.persistence.*;
+
+@Entity
 public class Book {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int bookId;
     private String title;
     private double price;
     private int pages;
     private int edition;
+    @ManyToOne
+    @JoinColumn(name = "publisherId", insertable = false, updatable = false)
     private Publisher publisher;
     private int publisherId;
 

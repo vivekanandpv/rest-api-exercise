@@ -1,5 +1,6 @@
 package com.example.restapiexercise.services;
 
+import com.example.restapiexercise.repositories.BookRepository;
 import com.example.restapiexercise.viewmodels.BookCreateViewModel;
 import com.example.restapiexercise.viewmodels.BookUpdateViewModel;
 import com.example.restapiexercise.viewmodels.BookViewModel;
@@ -9,6 +10,11 @@ import java.util.List;
 
 @Service
 public class BookServiceImplementation implements BookService {
+    private final BookRepository bookRepository;
+
+    public BookServiceImplementation(BookRepository bookRepository) {
+        this.bookRepository = bookRepository;
+    }
 
     @Override
     public List<BookViewModel> get() {
