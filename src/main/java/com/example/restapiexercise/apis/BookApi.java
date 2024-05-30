@@ -1,14 +1,11 @@
 package com.example.restapiexercise.apis;
 
-import com.example.restapiexercise.exceptions.RecordNotFoundException;
 import com.example.restapiexercise.models.Book;
 import com.example.restapiexercise.services.BookService;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Map;
 
 @RestController
 @RequestMapping("api/v1/books")

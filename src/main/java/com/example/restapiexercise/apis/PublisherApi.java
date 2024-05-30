@@ -1,8 +1,6 @@
 package com.example.restapiexercise.apis;
 
-import com.example.restapiexercise.models.Book;
 import com.example.restapiexercise.models.Publisher;
-import com.example.restapiexercise.services.BookService;
 import com.example.restapiexercise.services.PublisherService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
