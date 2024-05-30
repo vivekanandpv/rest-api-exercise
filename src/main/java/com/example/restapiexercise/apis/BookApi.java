@@ -43,19 +43,4 @@ public class BookApi {
         bookService.delete(id);
         return ResponseEntity.noContent().build();
     }
-
-    @ExceptionHandler(RuntimeException.class)
-    public ResponseEntity<?> handleRuntimeException(RuntimeException exception) {
-        return ResponseEntity.badRequest().body(exception.getMessage());
-    }
-
-    @ExceptionHandler(IllegalArgumentException.class)
-    public ResponseEntity<?> handleIllegalArgumentException(IllegalArgumentException exception) {
-        return ResponseEntity.notFound().build();
-    }
-
-    @ExceptionHandler(RecordNotFoundException.class)
-    public ResponseEntity<Map<String, String>> handleRecordNotFoundException(RecordNotFoundException exception) {
-        return ResponseEntity.status(404).body(Map.of("error", exception.getMessage()));
-    }
 }
