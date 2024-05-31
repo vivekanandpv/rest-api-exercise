@@ -1,8 +1,15 @@
 package com.example.restapiexercise.viewmodels;
 
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
+
 public class PublisherUpdateViewModel {
+    @NotBlank
     private String addressLine1;
     private String addressLine2;
+
+    @NotBlank
+    @Size(min=5, max = 200)
     private String city;
 
     public String getAddressLine1() {

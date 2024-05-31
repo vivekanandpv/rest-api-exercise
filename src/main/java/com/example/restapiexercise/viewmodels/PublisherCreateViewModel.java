@@ -1,11 +1,28 @@
 package com.example.restapiexercise.viewmodels;
 
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
+
 public class PublisherCreateViewModel {
+    @NotBlank(message = "Cannot accept null, empty, or whitespace for publisher name")
+    @Size(min = 5, max = 50)
     private String name;
+
+    @NotBlank
     private String addressLine1;
     private String addressLine2;
+
+    @NotBlank
+    @Size(min=5, max = 200)
     private String city;
+
+    @NotBlank
+    @Size(min=5, max = 200)
     private String country;
+
+    @NotBlank
+    @Email
     private String email;
 
     public String getName() {
