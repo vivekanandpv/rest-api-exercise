@@ -36,17 +36,24 @@ public class PublisherServiceImplementation implements PublisherService {
 
     @Override
     public PublisherViewModel create(PublisherCreateViewModel viewModel) {
-        return null;
+        return toViewModel(publisherRepository.saveAndFlush(toEntity(viewModel)));
     }
 
     @Override
     public PublisherViewModel update(int id, PublisherUpdateViewModel viewModel) {
-        return null;
+        //  find the entity
+        Publisher entity = getEntity(id);
+
+        //  copy the properties
+        BeanUtils.copyProperties(viewModel, entity);
+
+        //  save
+        return toViewModel(publisherRepository.saveAndFlush(entity));
     }
 
     @Override
     public void delete(int id) {
-
+        publisherRepository.delete(getEntity(id));
     }
 
     private PublisherViewModel toViewModel(Publisher entity) {
